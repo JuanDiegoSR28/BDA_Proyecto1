@@ -47,7 +47,7 @@ Consultas con = new Consultas();
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Trebuchet MS", 1, 22)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 102));
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Bienvenido al sistema de compras de libros");
         jLabel1.setPreferredSize(new java.awt.Dimension(360, 21));
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 60, 450, -1));

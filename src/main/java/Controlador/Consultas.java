@@ -25,7 +25,8 @@ public class Consultas extends Conexion {
             pst.setString(2, contraseña);
             rs = pst.executeQuery();
 
-            if (rs.next()) {
+            if (rs.next()) 
+            {
                 System.out.println("Usuario Valido");
                 // Mostrar mensaje de usuario válido
                 JOptionPane.showMessageDialog(null, "Usuario válido", "Autenticación exitosa", JOptionPane.INFORMATION_MESSAGE);

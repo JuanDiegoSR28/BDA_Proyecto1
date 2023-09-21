@@ -8,6 +8,7 @@ import Controlador.Consultas;
 import DAO.ClienteDao;
 import Dominio.Cliente;
 import java.awt.HeadlessException;
+import java.util.List;
 import javax.swing.JOptionPane;
 
 /**
@@ -55,7 +56,6 @@ public class frmRegistro extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
-        setPreferredSize(new java.awt.Dimension(624, 627));
         setResizable(false);
         setSize(new java.awt.Dimension(624, 627));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -103,7 +103,7 @@ public class frmRegistro extends javax.swing.JFrame {
         jLabel9.setText("Teléfono");
         getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 250, -1, -1));
 
-        btnRegistrar.setFont(new java.awt.Font("Trebuchet MS", 0, 12)); // NOI18N
+        btnRegistrar.setFont(new java.awt.Font("Trebuchet MS", 0, 14)); // NOI18N
         btnRegistrar.setText("Registrar");
         btnRegistrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -112,7 +112,7 @@ public class frmRegistro extends javax.swing.JFrame {
         });
         getContentPane().add(btnRegistrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 290, -1, -1));
 
-        btnLimpiar.setFont(new java.awt.Font("Trebuchet MS", 0, 12)); // NOI18N
+        btnLimpiar.setFont(new java.awt.Font("Trebuchet MS", 0, 14)); // NOI18N
         btnLimpiar.setText("Limpiar campos");
         btnLimpiar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -178,11 +178,32 @@ public class frmRegistro extends javax.swing.JFrame {
                 this.txtDireccion.getText()
         );
 
-        try {
+         try {
+            
+            // Validación de campo de correo
+            List<Cliente> registros = cd.obtenerClientes();
+            for (int i = 0; i < registros.size(); i++) {
+                if (txtCorreo.getText().equals(registros.get(i).getCorreo())) {
+                    throw new IllegalArgumentException("El correo ya ha sido utilizado.");
+                }
+            }
+
+            // Validación de campo de teléfono
+            if (cliente.getTelefono().length() != 10) {
+                throw new IllegalArgumentException("El campo de teléfono debe contener 10 dígitos.");
+            }
+
             cd.crearCliente(cliente);
+
+            this.txtNombre.setText("");
+            this.txtPass.setText("");
+            this.txtCorreo.setText("");
+            this.txtTelefono.setText("");
+            this.txtDireccion.setText("");
+
             JOptionPane.showMessageDialog(null, "Registro Exitoso", "Todo Correcto", 2);
-        } catch (HeadlessException e) {
-            JOptionPane.showMessageDialog(null, "Usuario no válido", "Error de registro", JOptionPane.ERROR_MESSAGE);
+        } catch (HeadlessException | IllegalArgumentException e) {
+            JOptionPane.showMessageDialog(null, e.getMessage(), "Error de registro", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_btnRegistrarActionPerformed
 
