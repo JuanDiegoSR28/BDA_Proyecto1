@@ -5,6 +5,10 @@
 package GUI;
 
 import Controlador.Consultas;
+import DAO.ClienteDao;
+import Dominio.Cliente;
+import java.awt.HeadlessException;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -110,6 +114,11 @@ public class frmRegistro extends javax.swing.JFrame {
 
         btnLimpiar.setFont(new java.awt.Font("Trebuchet MS", 0, 12)); // NOI18N
         btnLimpiar.setText("Limpiar campos");
+        btnLimpiar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLimpiarActionPerformed(evt);
+            }
+        });
         getContentPane().add(btnLimpiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 290, -1, -1));
 
         jLabel1.setFont(new java.awt.Font("Trebuchet MS", 0, 14)); // NOI18N
@@ -151,20 +160,39 @@ public class frmRegistro extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSalirActionPerformed
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
-        
-this.setVisible(false);
-frmLogin login = new frmLogin();
-login.setVisible(true);
-        
-        
+
+        this.setVisible(false);
+        frmLogin login = new frmLogin();
+        login.setVisible(true);
+
+
     }//GEN-LAST:event_btnLoginActionPerformed
 
     private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
-Consultas sql = new Consultas();
-sql.registrar(txtNombre.getText(),txtPass.getText(),txtCorreo.getText(),Integer.parseInt(txtTelefono.getText()),txtDireccion.getText());
-        
-        
+        ClienteDao cd = new ClienteDao();
+        Cliente cliente = new Cliente(
+                this.txtNombre.getText(),
+                this.txtPass.getText(),
+                this.txtCorreo.getText(),
+                this.txtTelefono.getText(),
+                this.txtDireccion.getText()
+        );
+
+        try {
+            cd.crearCliente(cliente);
+            JOptionPane.showMessageDialog(null, "Registro Exitoso", "Todo Correcto", 2);
+        } catch (HeadlessException e) {
+            JOptionPane.showMessageDialog(null, "Usuario no válido", "Error de registro", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_btnRegistrarActionPerformed
+
+    private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
+        this.txtNombre.setText("");
+        this.txtPass.setText("");
+        this.txtCorreo.setText("");
+        this.txtTelefono.setText("");
+        this.txtDireccion.setText("");
+    }//GEN-LAST:event_btnLimpiarActionPerformed
 
     /**
      * @param args the command line arguments

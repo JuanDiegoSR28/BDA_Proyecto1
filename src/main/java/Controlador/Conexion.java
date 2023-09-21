@@ -1,46 +1,35 @@
 package Controlador;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.SQLException; 
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
+import java.sql.SQLException;
 
 /**
- * @author Equipo 04 
+ * @author Equipo 04
  */
-public class Conexion 
-{
-    
-    private String username="root";
-    private String password="";
-    private String host="localhost";
-    private String port="3306";
-    private String database="ecommercelibros";
-    private String classname="com.mysql.cj.jdbc.Driver";
-    private String url="jdbc:mysql://"+host+":"+port+"/"+database;
+public class Conexion {
+
+    private String username = "root";
+    private String password = "";
+    private String host = "localhost";
+    private String port = "3306";
+    private String database = "ecommercelibros";
+    private String classname = "com.mysql.cj.jdbc.Driver";
+    private String url = "jdbc:mysql://" + host + ":" + port + "/" + database;
     private Connection con;
-    
-    public Conexion()
-    {
-        try
-        {
+
+    public Conexion() {
+    }
+
+    public Connection getConexion() {
+        try {
             Class.forName(classname);
-            con = DriverManager.getConnection(url,username,password);
-            System.out.println("Conexión establecida!");
+            return con = DriverManager.getConnection(url, username, password);
+        } catch (ClassNotFoundException | SQLException e) {
+            System.err.println("Error en: " + e);
         }
-        catch(ClassNotFoundException | SQLException e)
-                {
-                    System.err.println("Error en: "+e);
-                    
-                }
+
+        return null;
     }
-    
-    public Connection getConexion()
-    {
-        return con;
-    }
-    
-    
 
 }
