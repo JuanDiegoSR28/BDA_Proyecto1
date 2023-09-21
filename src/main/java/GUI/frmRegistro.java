@@ -8,6 +8,7 @@ import Controlador.Consultas;
 import DAO.ClienteDao;
 import Dominio.Cliente;
 import java.awt.HeadlessException;
+import java.util.List;
 import javax.swing.JOptionPane;
 
 /**
@@ -179,10 +180,31 @@ public class frmRegistro extends javax.swing.JFrame {
         );
 
         try {
+            
+            // Validación de campo de correo
+            List<Cliente> registros = cd.obtenerClientes();
+            for (int i = 0; i < registros.size(); i++) {
+                if (txtCorreo.getText().equals(registros.get(i).getCorreo())) {
+                    throw new IllegalArgumentException("El correo ya ha sido utilizado.");
+                }
+            }
+
+            // Validación de campo de teléfono
+            if (cliente.getTelefono().length() != 10) {
+                throw new IllegalArgumentException("El campo de teléfono debe contener 10 dígitos.");
+            }
+
             cd.crearCliente(cliente);
+
+            this.txtNombre.setText("");
+            this.txtPass.setText("");
+            this.txtCorreo.setText("");
+            this.txtTelefono.setText("");
+            this.txtDireccion.setText("");
+
             JOptionPane.showMessageDialog(null, "Registro Exitoso", "Todo Correcto", 2);
-        } catch (HeadlessException e) {
-            JOptionPane.showMessageDialog(null, "Usuario no válido", "Error de registro", JOptionPane.ERROR_MESSAGE);
+        } catch (HeadlessException | IllegalArgumentException e) {
+            JOptionPane.showMessageDialog(null, e.getMessage(), "Error de registro", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_btnRegistrarActionPerformed
 
