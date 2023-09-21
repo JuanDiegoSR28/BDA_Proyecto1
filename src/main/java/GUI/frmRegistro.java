@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
+
 package GUI;
 
 import Controlador.Consultas;
@@ -178,8 +175,8 @@ public class frmRegistro extends javax.swing.JFrame {
                 this.txtDireccion.getText()
         );
 
-         try {
-            
+        try {
+        
             // Validación de campo de correo
             List<Cliente> registros = cd.obtenerClientes();
             for (int i = 0; i < registros.size(); i++) {
