@@ -38,8 +38,8 @@ Consultas con = new Consultas();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         btnRegistrar = new javax.swing.JMenuItem();
-        btnSalir = new javax.swing.JMenu();
-        jMenuItem2 = new javax.swing.JMenuItem();
+        menuSistema = new javax.swing.JMenu();
+        btnSalir = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -92,17 +92,17 @@ Consultas con = new Consultas();
 
         jMenuBar1.add(jMenu1);
 
-        btnSalir.setText("Sistema");
+        menuSistema.setText("Sistema");
 
-        jMenuItem2.setText("Salir");
-        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+        btnSalir.setText("Salir");
+        btnSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem2ActionPerformed(evt);
+                btnSalirActionPerformed(evt);
             }
         });
-        btnSalir.add(jMenuItem2);
+        menuSistema.add(btnSalir);
 
-        jMenuBar1.add(btnSalir);
+        jMenuBar1.add(menuSistema);
 
         setJMenuBar(jMenuBar1);
 
@@ -117,9 +117,9 @@ Consultas con = new Consultas();
         
     }//GEN-LAST:event_btnVerificarActionPerformed
 
-    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+    private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
         this.dispose();
-    }//GEN-LAST:event_jMenuItem2ActionPerformed
+    }//GEN-LAST:event_btnSalirActionPerformed
 
     private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
         
@@ -169,7 +169,7 @@ registro.setVisible(true);
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem btnRegistrar;
-    private javax.swing.JMenu btnSalir;
+    private javax.swing.JMenuItem btnSalir;
     private javax.swing.JButton btnVerificar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -177,7 +177,7 @@ registro.setVisible(true);
     private javax.swing.JLabel jLabel4;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenu menuSistema;
     private javax.swing.JTextField txtId;
     private javax.swing.JTextField txtPass;
     // End of variables declaration//GEN-END:variables

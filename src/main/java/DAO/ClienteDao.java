@@ -151,7 +151,8 @@ public class ClienteDao implements IClienteDao {
             pst.setInt(1, idCliente);
             rs = pst.executeQuery();
 
-            if (rs.next()) {
+            if (rs.next()) 
+            {
                 cliente = new Cliente(
                         rs.getInt("id_Cliente"),
                         rs.getString("nombre"),
@@ -161,10 +162,15 @@ public class ClienteDao implements IClienteDao {
                         rs.getString("dirección")
                 );
             }
+            else
+            {
+                System.out.println("NO HAY CLIENTE CON ESE ID");
+            }
         } catch (SQLException e) {
             e.printStackTrace(System.out);
         } finally {
-            try {
+            try 
+            {
                 if (con.getConexion() != null) {
                     con.getConexion().close();
                 }

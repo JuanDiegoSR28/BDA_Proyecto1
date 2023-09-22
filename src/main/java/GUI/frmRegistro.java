@@ -19,6 +19,8 @@ public class frmRegistro extends javax.swing.JFrame {
      */
     public frmRegistro() {
         initComponents();
+        
+        
     }
 
     /**
@@ -90,6 +92,11 @@ public class frmRegistro extends javax.swing.JFrame {
         getContentPane().add(txtDireccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 220, 310, -1));
 
         txtTelefono.setFont(new java.awt.Font("Trebuchet MS", 0, 12)); // NOI18N
+        txtTelefono.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtTelefonoKeyTyped(evt);
+            }
+        });
         getContentPane().add(txtTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 250, 310, -1));
 
         jLabel8.setFont(new java.awt.Font("Trebuchet MS", 0, 14)); // NOI18N
@@ -167,7 +174,8 @@ public class frmRegistro extends javax.swing.JFrame {
 
     private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
         ClienteDao cd = new ClienteDao();
-        Cliente cliente = new Cliente(
+        Cliente cliente = new Cliente
+        (
                 this.txtNombre.getText(),
                 this.txtPass.getText(),
                 this.txtCorreo.getText(),
@@ -176,6 +184,11 @@ public class frmRegistro extends javax.swing.JFrame {
         );
 
         try {
+            
+            if("".equals(txtNombre.getText()) || "".equals(txtPass.getText()) || "".equals(txtCorreo.getText()) || "".equals(txtTelefono.getText()) || "".equals(txtDireccion.getText()) )
+            {
+                throw new IllegalArgumentException("Favor de rellenar todos los campos");
+            }            
         
             // Validación de campo de correo
             List<Cliente> registros = cd.obtenerClientes();
@@ -189,7 +202,7 @@ public class frmRegistro extends javax.swing.JFrame {
             if (cliente.getTelefono().length() != 10) {
                 throw new IllegalArgumentException("El campo de teléfono debe contener 10 dígitos.");
             }
-
+        
             cd.crearCliente(cliente);
 
             this.txtNombre.setText("");
@@ -199,6 +212,10 @@ public class frmRegistro extends javax.swing.JFrame {
             this.txtDireccion.setText("");
 
             JOptionPane.showMessageDialog(null, "Registro Exitoso", "Todo Correcto", 2);
+            this.setVisible(false);
+            frmMenu menu = new frmMenu();
+            menu.setVisible(true);
+            
         } catch (HeadlessException | IllegalArgumentException e) {
             JOptionPane.showMessageDialog(null, e.getMessage(), "Error de registro", JOptionPane.ERROR_MESSAGE);
         }
@@ -212,40 +229,17 @@ public class frmRegistro extends javax.swing.JFrame {
         this.txtDireccion.setText("");
     }//GEN-LAST:event_btnLimpiarActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(frmRegistro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(frmRegistro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(frmRegistro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(frmRegistro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+    private void txtTelefonoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTelefonoKeyTyped
+        
+        char c = evt.getKeyChar();
+        
+        if(!Character.isDigit(c))
+        {
+            evt.consume();
         }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new frmRegistro().setVisible(true);
-            }
-        });
-    }
+        
+        
+    }//GEN-LAST:event_txtTelefonoKeyTyped
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnLimpiar;

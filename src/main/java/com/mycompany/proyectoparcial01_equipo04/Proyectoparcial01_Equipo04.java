@@ -18,6 +18,11 @@ public class Proyectoparcial01_Equipo04 {
         
         ClienteDao cd = new ClienteDao();
         
+        
+        Cliente cliente = cd.obtenerCliente(50);
+        
+        
+        
 //        cd.modificarCliente(new Cliente(2, "Adolfo", "234", "antonio234@mail.com", "1122334455", "Carlos Quinto No. 15"));
         
 //        cd.eliminarCliente(new Cliente(6, "Adolfo", "234", "antonio234@mail.com", "1122334455", "Carlos Quinto No. 15"));
