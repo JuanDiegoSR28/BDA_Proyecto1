@@ -6,7 +6,7 @@ package Dominio;
  */
 public class Cliente {
 
-    private int idCliente;
+    private String idCliente;
     private String nombre;
     private String contrasenia;
     private String correo;
@@ -24,7 +24,7 @@ public class Cliente {
         this.direccion = direccion;
     }
 
-    public Cliente(int idCliente, String nombre, String contrasenia, String correo, String telefono, String direccion) {
+    public Cliente(String idCliente, String nombre, String contrasenia, String correo, String telefono, String direccion) {
         this.idCliente = idCliente;
         this.nombre = nombre;
         this.contrasenia = contrasenia;
@@ -33,11 +33,11 @@ public class Cliente {
         this.direccion = direccion;
     }
 
-    public int getIdCliente() {
+    public String getIdCliente() {
         return idCliente;
     }
 
-    public void setIdCliente(int idCliente) {
+    public void setIdCliente(String idCliente) {
         this.idCliente = idCliente;
     }
 

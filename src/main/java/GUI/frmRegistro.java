@@ -10,7 +10,7 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author PC
+ * @author Equipo 04
  */
 public class frmRegistro extends javax.swing.JFrame {
 

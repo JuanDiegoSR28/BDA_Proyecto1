@@ -63,6 +63,11 @@ Consultas con = new Consultas();
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 260, -1, -1));
 
         txtId.setFont(new java.awt.Font("Trebuchet MS", 0, 18)); // NOI18N
+        txtId.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtIdKeyTyped(evt);
+            }
+        });
         getContentPane().add(txtId, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 170, 300, -1));
 
         btnVerificar.setFont(new java.awt.Font("Trebuchet MS", 0, 14)); // NOI18N
@@ -112,8 +117,14 @@ Consultas con = new Consultas();
 
     private void btnVerificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerificarActionPerformed
         
-        con.autentication(txtId.getText(), txtPass.getText());
+        boolean resultado = con.autentication(txtId.getText(), txtPass.getText());
         
+        if(resultado == true)
+        {
+            this.setVisible(false);
+            frmMenu menu = new frmMenu();
+            menu.setVisible(true);
+        }
         
     }//GEN-LAST:event_btnVerificarActionPerformed
 
@@ -131,6 +142,19 @@ registro.setVisible(true);
         
         
     }//GEN-LAST:event_btnRegistrarActionPerformed
+
+    private void txtIdKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtIdKeyTyped
+        
+                
+        char c = evt.getKeyChar();
+        
+        if(!Character.isDigit(c))
+        {
+            evt.consume();
+        }
+        
+        
+    }//GEN-LAST:event_txtIdKeyTyped
 
     /**
      * @param args the command line arguments

@@ -1,6 +1,7 @@
 
 package Controlador;
 
+import Dominio.Cliente;
 import javax.swing.JOptionPane;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -13,25 +14,32 @@ public class Consultas extends Conexion {
         conexion = getConexion();
     }
 
-    public boolean autentication(String nombre, String contraseña) {
+    public boolean autentication(String id, String contraseña) {
         PreparedStatement pst = null;
         ResultSet rs = null;
         
         try {
-            String consulta = "Select * from Cliente where nombre=? and contraseña=? ";
+            String consulta = "Select * from Cliente where id_Cliente=? and contraseña=? ";
             System.out.println("Consulta es " + consulta);
             pst = conexion.prepareStatement(consulta);
-            pst.setString(1, nombre);
+            pst.setString(1, id);
             pst.setString(2, contraseña);
             rs = pst.executeQuery();
 
             if (rs.next()) 
             {
+                
+                Cliente c = new Cliente ();
+                c.setIdCliente("1");
+
                 System.out.println("Usuario Valido");
                 // Mostrar mensaje de usuario válido
                 JOptionPane.showMessageDialog(null, "Usuario válido", "Autenticación exitosa", JOptionPane.INFORMATION_MESSAGE);
+                
                 return true;
             }
+            
+            
         } catch (Exception e) {
             System.out.println("Error en " + e);
         } finally {

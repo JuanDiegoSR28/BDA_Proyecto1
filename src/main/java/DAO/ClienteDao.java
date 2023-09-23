@@ -56,7 +56,7 @@ public class ClienteDao implements IClienteDao {
             pst.setString(3, cliente.getCorreo());
             pst.setString(4, cliente.getTelefono());
             pst.setString(5, cliente.getDireccion());
-            pst.setInt(6, cliente.getIdCliente());
+            pst.setString(6, cliente.getIdCliente());
             pst.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace(System.out);
@@ -80,7 +80,7 @@ public class ClienteDao implements IClienteDao {
         try {
             String consulta = "DELETE FROM cliente WHERE id_Cliente = ?";
             pst = con.getConexion().prepareStatement(consulta);
-            pst.setInt(1, cliente.getIdCliente());
+            pst.setString(1, cliente.getIdCliente());
             pst.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace(System.out);
@@ -111,7 +111,7 @@ public class ClienteDao implements IClienteDao {
             while (rs.next()) {
                 lista.add(
                         new Cliente(
-                                rs.getInt("id_Cliente"),
+                                rs.getString("id_Cliente"),
                                 rs.getString("nombre"),
                                 rs.getString("contraseña"),
                                 rs.getString("correo"),
@@ -154,7 +154,7 @@ public class ClienteDao implements IClienteDao {
             if (rs.next()) 
             {
                 cliente = new Cliente(
-                        rs.getInt("id_Cliente"),
+                        rs.getString("id_Cliente"),
                         rs.getString("nombre"),
                         rs.getString("contraseña"),
                         rs.getString("correo"),
