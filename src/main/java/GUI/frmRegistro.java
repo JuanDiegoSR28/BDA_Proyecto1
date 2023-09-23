@@ -213,7 +213,7 @@ public class frmRegistro extends javax.swing.JFrame {
 
             JOptionPane.showMessageDialog(null, "Registro Exitoso", "Todo Correcto", 2);
             this.setVisible(false);
-            frmMenu menu = new frmMenu();
+            frmMenu menu = new frmMenu(cliente);
             menu.setVisible(true);
             
         } catch (HeadlessException | IllegalArgumentException e) {

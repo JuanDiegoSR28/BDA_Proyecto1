@@ -186,5 +186,25 @@ public class ClienteDao implements IClienteDao {
         }
         return cliente;
     }
+    
+//    public boolean verificacionEliminar(Cliente c)
+//    {
+//        PreparedStatement pst = null;
+//        ResultSet rs = null;
+//        Cliente cliente = null; 
+//        
+//        try
+//        {
+//            String consulta = "SELECT * FROM cliente WHERE id_Cliente = ?";
+//            pst = con.getConexion().prepareStatement(consulta);
+//            pst.setInt(1, idCliente);
+//            rs = pst.executeQuery();           
+//            
+//        }
+//        catch
+//                {
+//                    
+//                }
+//    }
 
 }

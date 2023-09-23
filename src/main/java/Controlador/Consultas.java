@@ -14,9 +14,11 @@ public class Consultas extends Conexion {
         conexion = getConexion();
     }
 
-    public boolean autentication(String id, String contraseña) {
+    public Cliente autentication(String id, String contraseña) {
         PreparedStatement pst = null;
         ResultSet rs = null;
+        Cliente c = new Cliente ();
+        
         
         try {
             String consulta = "Select * from Cliente where id_Cliente=? and contraseña=? ";
@@ -29,14 +31,17 @@ public class Consultas extends Conexion {
             if (rs.next()) 
             {
                 
-                Cliente c = new Cliente ();
-                c.setIdCliente("1");
-
                 System.out.println("Usuario Valido");
                 // Mostrar mensaje de usuario válido
                 JOptionPane.showMessageDialog(null, "Usuario válido", "Autenticación exitosa", JOptionPane.INFORMATION_MESSAGE);
+                c.setIdCliente(rs.getString("id_Cliente"));
+                c.setNombre(rs.getString("nombre"));
+                c.setContrasenia(rs.getString("contraseña"));
+                c.setCorreo(rs.getString("correo"));
+                c.setTelefono(rs.getString("teléfono"));
+                c.setDireccion(rs.getString("dirección"));
                 
-                return true;
+                return c;
             }
             
             
@@ -56,7 +61,7 @@ public class Consultas extends Conexion {
         // Mostrar mensaje de usuario no válido
         JOptionPane.showMessageDialog(null, "Usuario no válido", "Error de autenticación", JOptionPane.ERROR_MESSAGE);
         System.out.println("Usuario no válido");
-        return false;
+        return c;
     }
     
     public boolean registrar(String nombre, String contraseña , String correo, int teléfono, String dirección) {

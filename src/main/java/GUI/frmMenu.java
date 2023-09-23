@@ -1,17 +1,23 @@
 
 package GUI;
 
+import Dominio.Cliente;
+
 /**
  *
  * @author Equipo 04
  */
 public class frmMenu extends javax.swing.JFrame {
 
+    Cliente c;
+    
     /**
      * Creates new form frmMenu
      */
-    public frmMenu() {
+    public frmMenu(Cliente c) {
+        this.c = c;
         initComponents();
+        
     }
 
     /**
@@ -108,7 +114,7 @@ public class frmMenu extends javax.swing.JFrame {
         
         
 this.setVisible(false);
-frmModificar mod = new frmModificar();
+frmModificar mod = new frmModificar(c);
 mod.setVisible(true);
         
         
@@ -117,45 +123,12 @@ mod.setVisible(true);
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
         
 this.setVisible(false);
-frmRegistro registro = new frmRegistro();
-registro.setVisible(true);
+frmEliminar eliminar = new frmEliminar(c);
+eliminar.setVisible(true);
         
     }//GEN-LAST:event_btnEliminarActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(frmMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(frmMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(frmMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(frmMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new frmMenu().setVisible(true);
-            }
-        });
-    }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem btnEliminar;

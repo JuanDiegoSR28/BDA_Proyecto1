@@ -14,12 +14,21 @@ import javax.swing.JOptionPane;
  * @author Equipo 04
  */
 public class frmEliminar extends javax.swing.JFrame {
+Cliente c;
 
-    /**
-     * Creates new form frmEliminar
-     */
-    public frmEliminar() {
+
+    public frmEliminar(Cliente c) 
+    {
+        
+
+        
         initComponents();
+        this.c = c;
+        txtNombre.setText(c.getNombre());
+        txtCorreo.setText(c.getCorreo());
+        txtId.setText(c.getIdCliente());
+        txtDireccion.setText(c.getDireccion());
+        txtTelefono.setText(c.getTelefono());
     }
 
     /**
@@ -68,16 +77,17 @@ public class frmEliminar extends javax.swing.JFrame {
 
         jLabel3.setFont(new java.awt.Font("Trebuchet MS", 0, 16)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("Ingresa tu ID");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 90, -1, 20));
+        jLabel3.setText("ID");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 90, -1, 20));
 
         txtId.setFont(new java.awt.Font("Trebuchet MS", 0, 16)); // NOI18N
+        txtId.setEnabled(false);
         txtId.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtIdActionPerformed(evt);
             }
         });
-        getContentPane().add(txtId, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 90, 180, -1));
+        getContentPane().add(txtId, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 90, 240, -1));
 
         jLabel4.setFont(new java.awt.Font("Trebuchet MS", 1, 18)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 0));
@@ -104,15 +114,16 @@ public class frmEliminar extends javax.swing.JFrame {
         getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 130, -1, -1));
 
         txtNombre.setFont(new java.awt.Font("Trebuchet MS", 0, 16)); // NOI18N
-        getContentPane().add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 130, 180, -1));
+        txtNombre.setEnabled(false);
+        getContentPane().add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 130, 240, -1));
 
         jLabel7.setFont(new java.awt.Font("Trebuchet MS", 0, 16)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel7.setText("Contraseña");
-        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 170, -1, -1));
+        jLabel7.setText("Ingresa tu contraseña");
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 290, -1, -1));
 
         txtPass.setFont(new java.awt.Font("Trebuchet MS", 0, 16)); // NOI18N
-        getContentPane().add(txtPass, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 170, 180, -1));
+        getContentPane().add(txtPass, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 290, 240, -1));
 
         jLabel8.setFont(new java.awt.Font("Trebuchet MS", 0, 16)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
@@ -120,10 +131,12 @@ public class frmEliminar extends javax.swing.JFrame {
         getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 210, -1, -1));
 
         txtCorreo.setFont(new java.awt.Font("Trebuchet MS", 0, 16)); // NOI18N
-        getContentPane().add(txtCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 210, 180, -1));
+        txtCorreo.setEnabled(false);
+        getContentPane().add(txtCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 210, 240, -1));
 
         txtDireccion.setFont(new java.awt.Font("Trebuchet MS", 0, 16)); // NOI18N
-        getContentPane().add(txtDireccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 250, 180, -1));
+        txtDireccion.setEnabled(false);
+        getContentPane().add(txtDireccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 250, 240, -1));
 
         jLabel9.setFont(new java.awt.Font("Trebuchet MS", 0, 16)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
@@ -131,12 +144,13 @@ public class frmEliminar extends javax.swing.JFrame {
         getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 250, -1, -1));
 
         txtTelefono.setFont(new java.awt.Font("Trebuchet MS", 0, 16)); // NOI18N
-        getContentPane().add(txtTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 290, 180, -1));
+        txtTelefono.setEnabled(false);
+        getContentPane().add(txtTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 170, 240, -1));
 
         jLabel10.setFont(new java.awt.Font("Trebuchet MS", 0, 16)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(255, 255, 255));
         jLabel10.setText("Teléfono");
-        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 290, -1, -1));
+        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 170, -1, -1));
 
         jLabel1.setFont(new java.awt.Font("Trebuchet MS", 0, 16)); // NOI18N
         jLabel1.setIcon(new javax.swing.ImageIcon(System.getProperty("user.dir")+"\\src\\main\\java\\Imagenes\\fondoLibro.jpg"));
@@ -182,7 +196,7 @@ public class frmEliminar extends javax.swing.JFrame {
         
         
         this.setVisible(false);
-frmModificar mod = new frmModificar();
+frmModificar mod = new frmModificar(c);
 mod.setVisible(true);
     }//GEN-LAST:event_btnModificarActionPerformed
 
@@ -222,40 +236,7 @@ mod.setVisible(true);
         
     }//GEN-LAST:event_btnEliminarActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(frmEliminar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(frmEliminar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(frmEliminar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(frmEliminar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new frmEliminar().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem btnCerrar;

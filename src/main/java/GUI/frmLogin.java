@@ -2,6 +2,7 @@
 package GUI;
 
 import Controlador.Consultas;
+import Dominio.Cliente;
 
 /**
  *
@@ -117,12 +118,12 @@ Consultas con = new Consultas();
 
     private void btnVerificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerificarActionPerformed
         
-        boolean resultado = con.autentication(txtId.getText(), txtPass.getText());
+        Cliente resultado = con.autentication(txtId.getText(), txtPass.getText());
         
-        if(resultado == true)
+        if(resultado.getIdCliente() != null)
         {
             this.setVisible(false);
-            frmMenu menu = new frmMenu();
+            frmMenu menu = new frmMenu(resultado);
             menu.setVisible(true);
         }
         

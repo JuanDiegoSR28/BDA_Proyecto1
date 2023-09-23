@@ -4,17 +4,21 @@
  */
 package GUI;
 
+import Dominio.Cliente;
+
 /**
  *
  * @author Equipo 04
  */
 public class frmModificar extends javax.swing.JFrame {
+Cliente c;
 
-    /**
-     * Creates new form frmModificar
-     */
-    public frmModificar() {
+
+    public frmModificar(Cliente c) 
+    {
+        this.c = c; 
         initComponents();
+        
     }
 
     /**
@@ -33,7 +37,7 @@ public class frmModificar extends javax.swing.JFrame {
         btnEliminar = new javax.swing.JMenuItem();
         btnCerrar = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
+        btnMenu = new javax.swing.JMenuItem();
         btnSalir = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -70,13 +74,13 @@ public class frmModificar extends javax.swing.JFrame {
 
         jMenu2.setText("Sistema");
 
-        jMenuItem1.setText("Volver al menú");
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+        btnMenu.setText("Volver al menú");
+        btnMenu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
+                btnMenuActionPerformed(evt);
             }
         });
-        jMenu2.add(jMenuItem1);
+        jMenu2.add(btnMenu);
 
         btnSalir.setText("Salir");
         btnSalir.addActionListener(new java.awt.event.ActionListener() {
@@ -98,18 +102,18 @@ public class frmModificar extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_btnSalirActionPerformed
 
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+    private void btnMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMenuActionPerformed
         
-        this.setVisible(false);
-frmMenu menu = new frmMenu();
+this.setVisible(false);
+frmMenu menu = new frmMenu(c);
 menu.setVisible(true);
         
         
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
+    }//GEN-LAST:event_btnMenuActionPerformed
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
         this.setVisible(false);
-frmEliminar elim = new frmEliminar();
+frmEliminar elim = new frmEliminar(c);
 elim.setVisible(true);
     }//GEN-LAST:event_btnEliminarActionPerformed
 
@@ -120,47 +124,17 @@ elim.setVisible(true);
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(frmModificar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(frmModificar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(frmModificar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(frmModificar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new frmModificar().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem btnCerrar;
     private javax.swing.JMenuItem btnEliminar;
+    private javax.swing.JMenuItem btnMenu;
     private javax.swing.JMenuItem btnSalir;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
     // End of variables declaration//GEN-END:variables
 }
