@@ -187,24 +187,53 @@ public class ClienteDao implements IClienteDao {
         return cliente;
     }
     
-//    public boolean verificacionEliminar(Cliente c)
-//    {
-//        PreparedStatement pst = null;
-//        ResultSet rs = null;
-//        Cliente cliente = null; 
-//        
-//        try
-//        {
-//            String consulta = "SELECT * FROM cliente WHERE id_Cliente = ?";
-//            pst = con.getConexion().prepareStatement(consulta);
-//            pst.setInt(1, idCliente);
-//            rs = pst.executeQuery();           
-//            
-//        }
-//        catch
-//                {
-//                    
-//                }
-//    }
 
+    public boolean verificacionEliminar(String pass, String idCliente)
+    {
+        PreparedStatement pst = null;
+        ResultSet rs = null;
+        
+        
+        try
+        {
+            String consulta = "SELECT * FROM cliente WHERE id_Cliente = ?";
+            pst = con.getConexion().prepareStatement(consulta);
+            pst.setString(1, idCliente);
+            rs = pst.executeQuery();  
+            
+            if(rs.next())
+            {
+                if(pass.equals(rs.getString("contraseña")))
+                {
+                    return true;
+                }
+            }
+            else
+            {
+                return false;
+            }
+            
+        }
+        catch(SQLException e) {
+            e.printStackTrace(System.out);
+        } finally {
+            try 
+            {
+                if (con.getConexion() != null) {
+                    con.getConexion().close();
+                }
+                if (pst != null) {
+                    pst.close();
+                }
+                if (rs != null) {
+                    rs.close();
+                }
+            } catch (SQLException e) {
+                e.printStackTrace(System.out);
+            }
+        }
+        return false;
+    }
+    
+    
 }

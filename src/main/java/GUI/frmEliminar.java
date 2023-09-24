@@ -62,7 +62,7 @@ Cliente c;
         btnModificar = new javax.swing.JMenuItem();
         btnCerrar = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
+        btnMenu = new javax.swing.JMenuItem();
         btnSalir = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -173,8 +173,13 @@ Cliente c;
 
         jMenu2.setText("Sistema");
 
-        jMenuItem1.setText("Volver al menú");
-        jMenu2.add(jMenuItem1);
+        btnMenu.setText("Volver al menú");
+        btnMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMenuActionPerformed(evt);
+            }
+        });
+        jMenu2.add(btnMenu);
 
         btnSalir.setText("Salir");
         btnSalir.addActionListener(new java.awt.event.ActionListener() {
@@ -195,9 +200,10 @@ Cliente c;
     private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
         
         
-        this.setVisible(false);
+this.setVisible(false);
 frmModificar mod = new frmModificar(c);
 mod.setVisible(true);
+this.dispose();
     }//GEN-LAST:event_btnModificarActionPerformed
 
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
@@ -213,34 +219,55 @@ mod.setVisible(true);
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
         ClienteDao cd = new ClienteDao();
-        Cliente cliente = new Cliente(
-                this.txtNombre.getText(),
-                this.txtPass.getText(),
-                this.txtCorreo.getText(),
-                this.txtTelefono.getText(),
-                this.txtDireccion.getText()
-        );
 
-        try {
-            cd.eliminarCliente(cliente);
-            JOptionPane.showMessageDialog(null, "Eliminación Exitosa", "Todo Correcto", 2);
+        
+    
 
+        try 
+        {
+            if("".equals(txtPass.getText()))
+            {
+                throw new IllegalArgumentException("Favor de poner tu constraseña");
+            }            
+            
+            if(cd.verificacionEliminar(txtPass.getText(), c.getIdCliente()) == true)
+            {
+                
+                
+                cd.eliminarCliente(c);
+                JOptionPane.showMessageDialog(null, "Cuenta eliminada, volviendo al inicio...", "Todo Correcto", 2);
+                this.dispose();
+                frmLogin log = new frmLogin();
+                log.setVisible(true);
+            }
+            else
+            {
+                throw new IllegalArgumentException("Contraseña incorrecta");
+            }
             
             
-        } catch (HeadlessException e) {
-            JOptionPane.showMessageDialog(null, "Usuario no válido", "Error de registro", JOptionPane.ERROR_MESSAGE);
-        }        
+        } catch (HeadlessException | IllegalArgumentException e) {
+            JOptionPane.showMessageDialog(null, e.getMessage(), "Error de registro", JOptionPane.ERROR_MESSAGE);
+        }      
         
         
         
         
     }//GEN-LAST:event_btnEliminarActionPerformed
 
+    private void btnMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMenuActionPerformed
+this.setVisible(false);
+frmMenu menu = new frmMenu(c);
+menu.setVisible(true);
+this.dispose();
+    }//GEN-LAST:event_btnMenuActionPerformed
+
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem btnCerrar;
     private javax.swing.JButton btnEliminar;
+    private javax.swing.JMenuItem btnMenu;
     private javax.swing.JMenuItem btnModificar;
     private javax.swing.JMenuItem btnSalir;
     private javax.swing.JLabel jLabel1;
@@ -256,7 +283,6 @@ mod.setVisible(true);
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JTextField txtCorreo;
     private javax.swing.JTextField txtDireccion;
     private javax.swing.JTextField txtId;

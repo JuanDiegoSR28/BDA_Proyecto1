@@ -121,9 +121,10 @@ public class frmLogin extends javax.swing.JFrame {
         Cliente resultado = con.autentication(txtId.getText(), txtPass.getText());
 
         if (resultado.getIdCliente() != null) {
-            this.setVisible(false);
+            this.dispose();
             frmMenu menu = new frmMenu(resultado);
             menu.setVisible(true);
+            
         }
 
     }//GEN-LAST:event_btnVerificarActionPerformed
@@ -137,7 +138,7 @@ public class frmLogin extends javax.swing.JFrame {
         this.setVisible(false);
         frmRegistro registro = new frmRegistro();
         registro.setVisible(true);
-
+        this.dispose();
 
     }//GEN-LAST:event_btnRegistrarActionPerformed
 
