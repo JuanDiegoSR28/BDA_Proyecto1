@@ -1,4 +1,3 @@
-
 package GUI;
 
 import Dominio.Cliente;
@@ -10,14 +9,14 @@ import Dominio.Cliente;
 public class frmMenu extends javax.swing.JFrame {
 
     Cliente c;
-    
+
     /**
      * Creates new form frmMenu
      */
     public frmMenu(Cliente c) {
         this.c = c;
         initComponents();
-        
+
     }
 
     /**
@@ -30,7 +29,7 @@ public class frmMenu extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel2 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        btnMostrarCatalogoLibros = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
@@ -49,9 +48,14 @@ public class frmMenu extends javax.swing.JFrame {
         jLabel2.setText("Menú de librería");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 50, -1, -1));
 
-        jButton1.setFont(new java.awt.Font("Trebuchet MS", 0, 14)); // NOI18N
-        jButton1.setText("Ver catálogo de libros");
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 130, -1, -1));
+        btnMostrarCatalogoLibros.setFont(new java.awt.Font("Trebuchet MS", 0, 14)); // NOI18N
+        btnMostrarCatalogoLibros.setText("Ver catálogo de libros");
+        btnMostrarCatalogoLibros.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMostrarCatalogoLibrosActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnMostrarCatalogoLibros, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 130, -1, -1));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(System.getProperty("user.dir")+"\\src\\main\\java\\Imagenes\\fondoMenu.png"));
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 843, 560));
@@ -111,30 +115,35 @@ public class frmMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSalirActionPerformed
 
     private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
-        
-        
-this.setVisible(false);
-frmModificar mod = new frmModificar(c);
-mod.setVisible(true);
-        
-        
+
+        this.setVisible(false);
+        frmModificar mod = new frmModificar(c);
+        mod.setVisible(true);
+
+
     }//GEN-LAST:event_btnModificarActionPerformed
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
-        
-this.setVisible(false);
-frmEliminar eliminar = new frmEliminar(c);
-eliminar.setVisible(true);
-        
+
+        this.setVisible(false);
+        frmEliminar eliminar = new frmEliminar(c);
+        eliminar.setVisible(true);
+
     }//GEN-LAST:event_btnEliminarActionPerformed
 
-    
+    private void btnMostrarCatalogoLibrosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMostrarCatalogoLibrosActionPerformed
+        // TODO add your handling code here:
+        this.setVisible(false);
+        frmCatalogoLibros catalogoLibros = new frmCatalogoLibros(c);
+        catalogoLibros.setVisible(true);
+    }//GEN-LAST:event_btnMostrarCatalogoLibrosActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem btnEliminar;
     private javax.swing.JMenuItem btnModificar;
+    private javax.swing.JButton btnMostrarCatalogoLibros;
     private javax.swing.JMenuItem btnSalir;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JMenu jMenu1;

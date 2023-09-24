@@ -1,4 +1,3 @@
-
 package GUI;
 
 import Controlador.Consultas;
@@ -7,17 +6,18 @@ import Dominio.Cliente;
 /**
  *
  * @author Equipo 04
- * 
+ *
  */
 public class frmLogin extends javax.swing.JFrame {
-    
-Consultas con = new Consultas();
+
+    Consultas con = new Consultas();
+
     /**
      * Creates new form frmLogin
      */
     public frmLogin() {
         initComponents();
-        
+
     }
 
     /**
@@ -117,16 +117,15 @@ Consultas con = new Consultas();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnVerificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerificarActionPerformed
-        
+
         Cliente resultado = con.autentication(txtId.getText(), txtPass.getText());
-        
-        if(resultado.getIdCliente() != null)
-        {
+
+        if (resultado.getIdCliente() != null) {
             this.setVisible(false);
             frmMenu menu = new frmMenu(resultado);
             menu.setVisible(true);
         }
-        
+
     }//GEN-LAST:event_btnVerificarActionPerformed
 
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
@@ -134,27 +133,23 @@ Consultas con = new Consultas();
     }//GEN-LAST:event_btnSalirActionPerformed
 
     private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
-        
-        
-        
-this.setVisible(false);
-frmRegistro registro = new frmRegistro();
-registro.setVisible(true);
-        
-        
+
+        this.setVisible(false);
+        frmRegistro registro = new frmRegistro();
+        registro.setVisible(true);
+
+
     }//GEN-LAST:event_btnRegistrarActionPerformed
 
     private void txtIdKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtIdKeyTyped
-        
-                
+
         char c = evt.getKeyChar();
-        
-        if(!Character.isDigit(c))
-        {
+
+        if (!Character.isDigit(c)) {
             evt.consume();
         }
-        
-        
+
+
     }//GEN-LAST:event_txtIdKeyTyped
 
     /**
