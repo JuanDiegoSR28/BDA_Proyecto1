@@ -7,7 +7,10 @@ package GUI;
 import DAO.ClienteDao;
 import Dominio.Cliente;
 import java.awt.HeadlessException;
+import java.sql.SQLException;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -16,13 +19,15 @@ import javax.swing.JOptionPane;
  */
 public class frmModificar extends javax.swing.JFrame {
 Cliente c;
-
+Cliente datosViejos;
+ClienteDao cd = new ClienteDao();
 
     public frmModificar(Cliente c) 
     {
         
         initComponents();
         this.c = c; 
+        cd = new ClienteDao();
         txtNombre.setText(c.getNombre());
         txtCorreo.setText(c.getCorreo());
         txtId.setText(c.getIdCliente());
@@ -55,6 +60,7 @@ Cliente c;
         txtTelefono = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
         btnModificar = new javax.swing.JButton();
+        btnRevertir = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
@@ -155,8 +161,19 @@ Cliente c;
                 btnModificarActionPerformed(evt);
             }
         });
-        getContentPane().add(btnModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 360, -1, -1));
+        getContentPane().add(btnModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 360, -1, -1));
 
+        btnRevertir.setFont(new java.awt.Font("Trebuchet MS", 0, 16)); // NOI18N
+        btnRevertir.setText("Revertir cambios");
+        btnRevertir.setEnabled(false);
+        btnRevertir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRevertirActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnRevertir, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 360, -1, -1));
+
+        jLabel1.setFont(new java.awt.Font("Trebuchet MS", 0, 16)); // NOI18N
         jLabel1.setIcon(new javax.swing.ImageIcon(System.getProperty("user.dir")+"\\src\\main\\java\\Imagenes\\fondoLibro.jpg"));
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-2, -1, 700, 550));
 
@@ -241,8 +258,10 @@ log.setVisible(true);
     }//GEN-LAST:event_txtNombreActionPerformed
 
     private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
-        ClienteDao cd = new ClienteDao();
+
         
+        
+        datosViejos = c;
         try
         {
             if("".equals(txtNombre.getText()) || "".equals(txtPass.getText()) || "".equals(txtCorreo.getText()) || "".equals(txtTelefono.getText()) || "".equals(txtDireccion.getText()) )
@@ -270,7 +289,7 @@ log.setVisible(true);
             if (txtTelefono.getText().length() != 10) {
                 throw new IllegalArgumentException("El campo de teléfono debe contener 10 dígitos.");
             }        
-            
+            btnRevertir.setEnabled(true);
             c.setNombre(txtNombre.getText());
             c.setContrasenia(txtPass.getText());
             c.setCorreo(txtCorreo.getText());
@@ -311,6 +330,16 @@ log.setVisible(true);
         // TODO add your handling code here:
     }//GEN-LAST:event_txtPassActionPerformed
 
+    private void btnRevertirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRevertirActionPerformed
+        
+
+        
+
+
+        
+        
+    }//GEN-LAST:event_btnRevertirActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -321,6 +350,7 @@ log.setVisible(true);
     private javax.swing.JMenuItem btnEliminar;
     private javax.swing.JMenuItem btnMenu;
     private javax.swing.JButton btnModificar;
+    private javax.swing.JButton btnRevertir;
     private javax.swing.JMenuItem btnSalir;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;

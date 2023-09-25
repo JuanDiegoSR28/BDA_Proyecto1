@@ -8,7 +8,7 @@ import javax.swing.JOptionPane;
 /**
  *
  * @author Equipo 04
- *
+ * 
  */
 public class frmLogin extends javax.swing.JFrame {
 
@@ -19,7 +19,6 @@ public class frmLogin extends javax.swing.JFrame {
      */
     public frmLogin() {
         initComponents();
-
     }
 
     /**
@@ -158,10 +157,10 @@ public class frmLogin extends javax.swing.JFrame {
 
     private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
 
-        this.setVisible(false);
+        this.dispose();
         frmRegistro registro = new frmRegistro();
         registro.setVisible(true);
-        this.dispose();
+        
 
     }//GEN-LAST:event_btnRegistrarActionPerformed
 

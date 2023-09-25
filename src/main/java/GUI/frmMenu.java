@@ -60,6 +60,11 @@ public class frmMenu extends javax.swing.JFrame {
 
         jButton1.setFont(new java.awt.Font("Trebuchet MS", 0, 14)); // NOI18N
         jButton1.setText("Ver carrito de compras");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 220, 180, -1));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(System.getProperty("user.dir")+"\\src\\main\\java\\Imagenes\\fondoMenu.png"));
@@ -142,6 +147,14 @@ public class frmMenu extends javax.swing.JFrame {
         frmCatalogoLibros catalogoLibros = new frmCatalogoLibros(c);
         catalogoLibros.setVisible(true);
     }//GEN-LAST:event_btnMostrarCatalogoLibrosActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        
+        this.dispose();
+        frmCarritoCompras catalogoCompras = new frmCarritoCompras(c);
+        catalogoCompras.setVisible(true);
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

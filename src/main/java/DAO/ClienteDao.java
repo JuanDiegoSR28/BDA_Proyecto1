@@ -7,6 +7,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -16,6 +18,11 @@ import javax.swing.JOptionPane;
 public class ClienteDao implements IClienteDao {
 
     Conexion con = new Conexion();
+    
+    public ClienteDao()
+    {
+
+    }
 
     @Override
     public void crearCliente(Cliente cliente) {
@@ -48,7 +55,10 @@ public class ClienteDao implements IClienteDao {
     @Override
     public void modificarCliente(Cliente cliente) {
         PreparedStatement pst = null;
+
         try {
+          
+            
             String consulta = "CALL ActualizarPerfilCliente (? , ? , ? , ? , ? , ?)";
             pst = con.getConexion().prepareStatement(consulta);
             pst.setString(1, cliente.getIdCliente());
@@ -58,8 +68,12 @@ public class ClienteDao implements IClienteDao {
             pst.setString(5, cliente.getTelefono());
             pst.setString(6, cliente.getDireccion());
             pst.executeUpdate();
+            
+            
+
+            
         } catch (SQLException e) {
-            e.printStackTrace(System.out);
+
         } finally {
             try {
                 if (con.getConexion() != null) {
@@ -234,6 +248,16 @@ public class ClienteDao implements IClienteDao {
         }
         return false;
     }
+
+    public Conexion getCon() {
+        return con;
+    }
+
+    public void setCon(Conexion con) {
+        this.con = con;
+    }
+    
+    
     
     
 }

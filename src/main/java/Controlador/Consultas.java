@@ -181,6 +181,45 @@ public class Consultas extends Conexion {
         }
 
         return modelo;
-    }    
+    }   
+
+     public void agregarOrden(int cantidad,Date fecha,int numeroConfirmacion,int id_Cliente)
+     {
+        PreparedStatement pst = null;
+        ResultSet rs = null;    
+        
+        try
+        {
+            String consulta = "INSERT INTO orden (cantidad, fechaCreacion, numeroConfirmacion, id_Cliente) VALUES (?, ?, ?, ?)";
+            pst = getConexion().prepareStatement(consulta);
+            pst.setInt(1, cantidad);
+            pst.setDate(2, fecha);
+            pst.setInt(3, numeroConfirmacion);
+            pst.setInt(4, id_Cliente);
+              if (pst.executeUpdate() == 1) {
+
+                JOptionPane.showMessageDialog(null, "Orden concretada", "Todo Correcto", 2);
+             
+            }
+        } catch (Exception e) {
+            System.out.println("Error en " + e);
+            JOptionPane.showMessageDialog(null, "Usuario no válido", "Error de registro", JOptionPane.ERROR_MESSAGE);
+        } finally {
+            try {
+                if (getConexion() != null) {
+                    getConexion().close();
+                }
+                if (pst != null) {
+                    pst.close();
+                }
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "Usuario no válido", "Error de registro", JOptionPane.ERROR_MESSAGE);
+                
+            }
+        }
+        
+        
+        
+     }   
 
 }
