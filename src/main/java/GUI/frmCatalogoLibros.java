@@ -47,8 +47,12 @@ public class frmCatalogoLibros extends javax.swing.JFrame {
         tablaLibros = new javax.swing.JTable();
         imagenFondo = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu1 = new javax.swing.JMenu();
+        btnModificar = new javax.swing.JMenuItem();
+        btnEliminar = new javax.swing.JMenuItem();
+        btnCerrar = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
+        btnMenu = new javax.swing.JMenuItem();
         btnSalir = new javax.swing.JMenuItem();
 
         jLabel2.setFont(new java.awt.Font("Trebuchet MS", 0, 14)); // NOI18N
@@ -83,15 +87,43 @@ public class frmCatalogoLibros extends javax.swing.JFrame {
         imagenFondo.setIcon(new javax.swing.ImageIcon(System.getProperty("user.dir")+"\\src\\main\\java\\Imagenes\\fondoRegistro.png"));
         getContentPane().add(imagenFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 630, 604));
 
-        jMenu2.setText("Sistema");
+        jMenu1.setText("Usuario");
 
-        jMenuItem1.setText("Volver al menú principal");
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+        btnModificar.setText("Modificar datos");
+        btnModificar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
+                btnModificarActionPerformed(evt);
             }
         });
-        jMenu2.add(jMenuItem1);
+        jMenu1.add(btnModificar);
+
+        btnEliminar.setText("Eliminar cuenta");
+        btnEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarActionPerformed(evt);
+            }
+        });
+        jMenu1.add(btnEliminar);
+
+        btnCerrar.setText("Cerrar sesión");
+        btnCerrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCerrarActionPerformed(evt);
+            }
+        });
+        jMenu1.add(btnCerrar);
+
+        jMenuBar1.add(jMenu1);
+
+        jMenu2.setText("Sistema");
+
+        btnMenu.setText("Volver al menú");
+        btnMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMenuActionPerformed(evt);
+            }
+        });
+        jMenu2.add(btnMenu);
 
         btnSalir.setText("Salir");
         btnSalir.addActionListener(new java.awt.event.ActionListener() {
@@ -113,21 +145,43 @@ public class frmCatalogoLibros extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_btnSalirActionPerformed
 
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        // TODO add your handling code here:
-        this.setVisible(false);
+    private void btnMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMenuActionPerformed
+        
+        this.dispose();
         frmMenu menuPrincipal = new frmMenu(c);
         menuPrincipal.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
+        
+    }//GEN-LAST:event_btnMenuActionPerformed
+
+    private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
+    this.dispose();
+    frmModificar mod = new frmModificar(c);
+    mod.setVisible(true);
+    }//GEN-LAST:event_btnModificarActionPerformed
+
+    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
+    this.dispose();
+    frmEliminar elim = new frmEliminar(c);
+    elim.setVisible(true);
+    }//GEN-LAST:event_btnEliminarActionPerformed
+
+    private void btnCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarActionPerformed
+    this.dispose();
+    frmLogin login = new frmLogin();
+    login.setVisible(true);
+    }//GEN-LAST:event_btnCerrarActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem btnCerrar;
+    private javax.swing.JMenuItem btnEliminar;
+    private javax.swing.JMenuItem btnMenu;
+    private javax.swing.JMenuItem btnModificar;
     private javax.swing.JMenuItem btnSalir;
     private javax.swing.JLabel imagenFondo;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblTitulo;
     private javax.swing.JTable tablaLibros;

@@ -49,14 +49,14 @@ public class ClienteDao implements IClienteDao {
     public void modificarCliente(Cliente cliente) {
         PreparedStatement pst = null;
         try {
-            String consulta = "UPDATE cliente SET nombre = ?, contraseña = ?, correo = ?, teléfono = ?, dirección = ? WHERE id_Cliente = ?";
+            String consulta = "CALL ActualizarPerfilCliente (? , ? , ? , ? , ? , ?)";
             pst = con.getConexion().prepareStatement(consulta);
-            pst.setString(1, cliente.getNombre());
-            pst.setString(2, cliente.getContrasenia());
-            pst.setString(3, cliente.getCorreo());
-            pst.setString(4, cliente.getTelefono());
-            pst.setString(5, cliente.getDireccion());
-            pst.setString(6, cliente.getIdCliente());
+            pst.setString(1, cliente.getIdCliente());
+            pst.setString(2, cliente.getNombre());
+            pst.setString(3, cliente.getContrasenia());
+            pst.setString(4, cliente.getCorreo());
+            pst.setString(5, cliente.getTelefono());
+            pst.setString(6, cliente.getDireccion());
             pst.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace(System.out);

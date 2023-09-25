@@ -53,7 +53,7 @@ public class frmCarritoCompras extends javax.swing.JFrame {
 
         jLabel2.setFont(new java.awt.Font("Trebuchet MS", 1, 22)); // NOI18N
         jLabel2.setText("Carrito de compras");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 40, -1, -1));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 40, -1, -1));
 
         tablaCarrito.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -68,7 +68,7 @@ public class frmCarritoCompras extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(tablaCarrito);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 550, 270));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 590, 270));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(System.getProperty("user.dir")+"\\src\\main\\java\\Imagenes\\fondoRegistro.png"));
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 604, 630));
