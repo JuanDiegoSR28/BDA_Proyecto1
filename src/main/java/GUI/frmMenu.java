@@ -30,6 +30,7 @@ public class frmMenu extends javax.swing.JFrame {
 
         jLabel2 = new javax.swing.JLabel();
         btnMostrarCatalogoLibros = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
@@ -56,6 +57,10 @@ public class frmMenu extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnMostrarCatalogoLibros, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 130, -1, -1));
+
+        jButton1.setFont(new java.awt.Font("Trebuchet MS", 0, 14)); // NOI18N
+        jButton1.setText("Ver carrito de compras");
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 220, 180, -1));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(System.getProperty("user.dir")+"\\src\\main\\java\\Imagenes\\fondoMenu.png"));
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 843, 560));
@@ -144,6 +149,7 @@ public class frmMenu extends javax.swing.JFrame {
     private javax.swing.JMenuItem btnModificar;
     private javax.swing.JButton btnMostrarCatalogoLibros;
     private javax.swing.JMenuItem btnSalir;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JMenu jMenu1;

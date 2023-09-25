@@ -24,7 +24,7 @@ public class Consultas extends Conexion {
 
         try {
             String consulta = "Select * from Cliente where id_Cliente=? and contraseña=? ";
-            System.out.println("Consulta es " + consulta);
+            
             pst = conexion.prepareStatement(consulta);
             pst.setString(1, id);
             pst.setString(2, contraseña);
@@ -32,7 +32,7 @@ public class Consultas extends Conexion {
 
             if (rs.next()) {
 
-                System.out.println("Usuario Valido");
+                
                 // Mostrar mensaje de usuario válido
                 JOptionPane.showMessageDialog(null, "Usuario válido", "Autenticación exitosa", JOptionPane.INFORMATION_MESSAGE);
                 c.setIdCliente(rs.getString("id_Cliente"));
@@ -61,8 +61,8 @@ public class Consultas extends Conexion {
         }
 
         // Mostrar mensaje de usuario no válido
-        JOptionPane.showMessageDialog(null, "Usuario no válido", "Error de autenticación", JOptionPane.ERROR_MESSAGE);
-        System.out.println("Usuario no válido");
+        JOptionPane.showMessageDialog(null, "Cliente no encontrado", "Error de autenticación", JOptionPane.ERROR_MESSAGE);
+        
         return c;
     }
 
@@ -95,7 +95,7 @@ public class Consultas extends Conexion {
                 }
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(null, "Usuario no válido", "Error de registro", JOptionPane.ERROR_MESSAGE);
-                System.out.println("Error en " + e);
+                
             }
         }
         return false;
@@ -140,5 +140,47 @@ public class Consultas extends Conexion {
 
         return modelo;
     }
+    
+   public DefaultTableModel obtenerCarrito() {
+        DefaultTableModel modelo = new DefaultTableModel();
+        modelo.addColumn("Título libro");
+        modelo.addColumn("ISBN");
+        modelo.addColumn("Género");
+        modelo.addColumn("Precio");
+        modelo.addColumn("Cantidad a comprar");
+
+        try {
+            Statement statement = conexion.createStatement();
+            String consulta = 
+                    """
+                    SELECT libro.titulo, libro.isbn,genero.nombreGenero,libro.precio,orden.cantidad
+                    FROM carritocompras
+                    INNER JOIN orden on carritocompras.id_Orden = orden.id_Orden
+                    INNER JOIN libro on carritocompras.isbn = libro.isbn
+                    INNER JOIN genero on libro.id_genero = genero.id_genero;""";
+            ResultSet resultado = statement.executeQuery(consulta);
+
+            while (resultado.next()) {
+                
+                String titulo = resultado.getString("titulo");
+                String isbn = resultado.getString("isbn");
+                String genero = resultado.getString("nombreGenero");
+                int precio = resultado.getInt("precio");
+                int cantidad = resultado.getInt("cantidad");
+                
+
+                // Agregar todos los campos al modelo de tabla
+                modelo.addRow(new Object[]{titulo, isbn, genero, precio, cantidad});
+            }
+
+            resultado.close();
+            statement.close();
+            conexion.close();
+        } catch (Exception e) {
+            System.out.println("Error en obtenerCatalogoLibros: " + e);
+        }
+
+        return modelo;
+    }    
 
 }

@@ -14,18 +14,19 @@ import javax.swing.table.DefaultTableModel;
 public class frmCatalogoLibros extends javax.swing.JFrame {
 
     Cliente c;
-
+    Consultas sql;
     /**
      * Creates new form frmRegistro
      */
-    public frmCatalogoLibros() {
+    public frmCatalogoLibros() 
+    {
         initComponents();
-
+        
     }
 
     public frmCatalogoLibros(Cliente c) {
         initComponents();
-        Consultas sql = new Consultas();
+        sql = new Consultas();
         this.c = c;
         DefaultTableModel catalogoLibros = sql.obtenerCatalogoLibros();
         this.tablaLibros.setModel(catalogoLibros);

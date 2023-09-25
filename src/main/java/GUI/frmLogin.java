@@ -2,6 +2,8 @@ package GUI;
 
 import Controlador.Consultas;
 import Dominio.Cliente;
+import java.awt.HeadlessException;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -117,15 +119,36 @@ public class frmLogin extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnVerificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerificarActionPerformed
-
+ 
+        try
+        {
+            
+            if("".equals(txtId.getText()) || "".equals(txtPass.getText()) )
+            {
+                throw new IllegalArgumentException("Favor de rellenar todos los campos");
+            }
+            
         Cliente resultado = con.autentication(txtId.getText(), txtPass.getText());
 
-        if (resultado.getIdCliente() != null) {
+        if (resultado.getIdCliente() != null) 
+            {
             this.dispose();
             frmMenu menu = new frmMenu(resultado);
             menu.setVisible(true);
-            
+            }
+
+        
         }
+        
+        catch (HeadlessException | IllegalArgumentException e) 
+        {
+            JOptionPane.showMessageDialog(null, e.getMessage(), "Error de registro", JOptionPane.ERROR_MESSAGE);
+        }
+            
+        
+    
+    
+    
 
     }//GEN-LAST:event_btnVerificarActionPerformed
 
