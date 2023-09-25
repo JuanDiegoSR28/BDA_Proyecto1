@@ -39,7 +39,12 @@ public class frmCarritoCompras extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
+        btnModificar = new javax.swing.JMenuItem();
+        btnEliminar = new javax.swing.JMenuItem();
+        btnCerrar = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
+        btnMenu = new javax.swing.JMenuItem();
+        btnSalir = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -63,15 +68,57 @@ public class frmCarritoCompras extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(tablaCarrito);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 90, 480, 270));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 550, 270));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(System.getProperty("user.dir")+"\\src\\main\\java\\Imagenes\\fondoRegistro.png"));
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 604, 630));
 
         jMenu1.setText("Usuario");
+
+        btnModificar.setText("Modificar datos");
+        btnModificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnModificarActionPerformed(evt);
+            }
+        });
+        jMenu1.add(btnModificar);
+
+        btnEliminar.setText("Eliminar cuenta");
+        btnEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarActionPerformed(evt);
+            }
+        });
+        jMenu1.add(btnEliminar);
+
+        btnCerrar.setText("Cerrar sesión");
+        btnCerrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCerrarActionPerformed(evt);
+            }
+        });
+        jMenu1.add(btnCerrar);
+
         jMenuBar1.add(jMenu1);
 
         jMenu2.setText("Sistema");
+
+        btnMenu.setText("Volver al menú");
+        btnMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMenuActionPerformed(evt);
+            }
+        });
+        jMenu2.add(btnMenu);
+
+        btnSalir.setText("Salir");
+        btnSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalirActionPerformed(evt);
+            }
+        });
+        jMenu2.add(btnSalir);
+
         jMenuBar1.add(jMenu2);
 
         setJMenuBar(jMenuBar1);
@@ -79,6 +126,45 @@ public class frmCarritoCompras extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
+        
+    this.dispose();
+    frmModificar mod = new frmModificar(c);
+    mod.setVisible(true);
+        
+    }//GEN-LAST:event_btnModificarActionPerformed
+
+    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
+        
+    this.dispose();
+    frmEliminar elim = new frmEliminar(c);
+    elim.setVisible(true);
+        
+    }//GEN-LAST:event_btnEliminarActionPerformed
+
+    private void btnCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarActionPerformed
+        
+    this.dispose();
+    frmLogin login = new frmLogin();
+    login.setVisible(true);
+    
+        
+    }//GEN-LAST:event_btnCerrarActionPerformed
+
+    private void btnMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMenuActionPerformed
+    this.dispose();
+    frmMenu menu = new frmMenu(c);
+    menu.setVisible(true);
+    
+    }//GEN-LAST:event_btnMenuActionPerformed
+
+    private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
+    
+        this.dispose();
+    
+    
+    }//GEN-LAST:event_btnSalirActionPerformed
 
     /**
      * @param args the command line arguments
@@ -116,6 +202,11 @@ public class frmCarritoCompras extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem btnCerrar;
+    private javax.swing.JMenuItem btnEliminar;
+    private javax.swing.JMenuItem btnMenu;
+    private javax.swing.JMenuItem btnModificar;
+    private javax.swing.JMenuItem btnSalir;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JMenu jMenu1;

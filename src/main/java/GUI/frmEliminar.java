@@ -200,10 +200,10 @@ Cliente c;
     private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
         
         
-this.setVisible(false);
+this.dispose();
 frmModificar mod = new frmModificar(c);
 mod.setVisible(true);
-this.dispose();
+
     }//GEN-LAST:event_btnModificarActionPerformed
 
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
